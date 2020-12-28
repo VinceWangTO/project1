@@ -2,15 +2,16 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
+import Login from './components/Login';
+import Home from './components/Home';
+
 const App = () => {
   return (
     <div>
       <BrowserRouter>
         <div>
-          {/* <NavBar /> */}
-          {/* <Route path="/" exact component={Login} />
-                 <Route path="/home" exact component={requireAuth(Home)} /> */}
-          Hello World
+          <Route path="/" exact component={Login} />
+          <Route path="/home" exact component={Home} />
         </div>
       </BrowserRouter>
     </div>
