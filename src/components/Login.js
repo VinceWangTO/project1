@@ -22,7 +22,7 @@ class Login extends Component {
   handleLogin = async (values) => {
     await this.props.login(values);
     if (this.props.authenticated) {
-      this.props.history.push('/home');
+      this.props.history.push('/dashboard');
     }
   };
 

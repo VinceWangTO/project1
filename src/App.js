@@ -3,8 +3,12 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import requireAuth from './components/require_auth';
+import myLayout from './components/MyTemplate';
+
 import Login from './components/Login';
-import Home from './components/Home';
+import DashBoard from './components/Dash';
+import Reimbursements from './components/Reimbursements';
+import Profile from './components/Profile';
 
 const App = () => {
   return (
@@ -12,7 +16,23 @@ const App = () => {
       <BrowserRouter>
         <div>
           <Route path="/" exact component={Login} />
-          <Route path="/home" exact component={requireAuth(Home)} />
+          <Route
+            path="/dashboard"
+            exact
+            component={requireAuth(myLayout(DashBoard, 'Dash Board', 1))}
+          />
+          <Route
+            path="/reimbursement"
+            exact
+            component={requireAuth(
+              myLayout(Reimbursements, 'Reimbursements', 2)
+            )}
+          />
+          <Route
+            path="/profile"
+            exact
+            component={requireAuth(myLayout(Profile, 'My Profile', 3))}
+          />
         </div>
       </BrowserRouter>
     </div>

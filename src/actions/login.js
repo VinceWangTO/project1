@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { CHANGE_AUTH, FETCH_ERROR_MESSAGE } from './types';
-import { BASE_URL, HEADER_OPTIONS, getCookie } from '../lib/config';
+import { CHANGE_AUTH } from './types';
+import { BASE_URL, HEADER_OPTIONS } from '../lib/config';
 
 export const login = (data) => async (dispatch) => {
   try {
