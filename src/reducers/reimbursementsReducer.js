@@ -2,6 +2,7 @@
 import {
   GET_ALL_REIMBURSEMENTS,
   GET_MY_REIMBURSEMENTS,
+  UPDATE_REIMBURSEMENT,
 } from '../actions/types';
 export default function (state = false, action) {
   switch (action.type) {
@@ -9,6 +10,15 @@ export default function (state = false, action) {
       return action.payload;
     case GET_MY_REIMBURSEMENTS:
       return action.payload;
+
+    case UPDATE_REIMBURSEMENT:
+      return state.map((reimbursement) => {
+        if (reimbursement.reimbursementId === action.payload.reimbursementId) {
+          // Return a new object
+          return action.payload;
+        }
+        return reimbursement;
+      });
     default:
       return state;
   }

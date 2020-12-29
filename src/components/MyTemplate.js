@@ -43,7 +43,7 @@ export const my_layout = (ComposedComponent, title, index) => {
             <Menu theme="dark" mode="inline" defaultSelectedKeys={[`${index}`]}>
               <Menu.Item key="1" icon={<DashboardOutlined />}>
                 Dash Board
-                <Link to="/home" />
+                <Link to="/dashboard" />
               </Menu.Item>
               <Menu.Item key="2" icon={<FileOutlined />}>
                 Reimbursements
@@ -69,7 +69,9 @@ export const my_layout = (ComposedComponent, title, index) => {
             >
               <Title
                 align="middle"
-                style={{ marginBottom: '100px', color: 'linen' }}
+                style={{
+                  color: 'linen',
+                }}
               >
                 {title}
               </Title>
@@ -77,12 +79,12 @@ export const my_layout = (ComposedComponent, title, index) => {
             <Content style={{ margin: '24px 16px 0' }}>
               <div
                 className="site-layout-background"
-                style={{ padding: 24, minHeight: 360 }}
+                style={{ padding: 24, minHeight: 360, margin: 100 }}
               >
                 <ComposedComponent {...this.props} />
               </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}></Footer>
+            <Footer style={{ textAlign: 'center' }}>Test Footer</Footer>
           </Layout>
         </Layout>
       );
