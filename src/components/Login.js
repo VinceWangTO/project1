@@ -45,6 +45,7 @@ class Login extends Component {
           backgroundColor: 'aliceblue',
           backgroundImage: `url("https://www.papa-mike.com/v6/wp-content/uploads/2014/05/LOGIN-BACKGROUND-1.jpg")`,
           opacity: '0.6',
+          backgroundSize: 'cover',
         }}
       >
         <Col span={6}></Col>

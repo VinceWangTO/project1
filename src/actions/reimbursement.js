@@ -3,6 +3,7 @@ import {
   GET_ALL_REIMBURSEMENTS,
   GET_MY_REIMBURSEMENTS,
   UPDATE_REIMBURSEMENT,
+  ADD_REIMBURSEMENT,
 } from './types';
 import { BASE_URL, HEADER_OPTIONS } from '../lib/config';
 
@@ -50,6 +51,22 @@ export const updateReimbursement = (reimbursement) => async (dispatch) => {
     if (response.status === 200) {
       const reimbursement = response.data;
       dispatch({ type: UPDATE_REIMBURSEMENT, payload: reimbursement });
+      //dispatch({ type: FETCH_ERROR_MESSAGE, payload: '' });
+    }
+  } catch (e) {}
+};
+
+export const addReimbursement = (reimbursement) => async (dispatch) => {
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/reimbursements`,
+      reimbursement,
+      HEADER_OPTIONS
+    );
+    if (response.status === 201) {
+      const reimbursement = response.data;
+      console.log(reimbursement);
+      dispatch({ type: ADD_REIMBURSEMENT, payload: reimbursement });
       //dispatch({ type: FETCH_ERROR_MESSAGE, payload: '' });
     }
   } catch (e) {}

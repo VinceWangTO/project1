@@ -152,7 +152,9 @@ class DashBoard extends Component {
             statusData[0].value = statusData[0].value + 1;
             r.status = 'PENDING';
         }
-
+        // r.reimbursementAmount = Number.parseFloat(
+        //   r.reimbursementAmount
+        // ).toFixed(2);
         return r;
       }) || [];
     const columns = [
@@ -216,7 +218,16 @@ class DashBoard extends Component {
     return (
       <Row align="middle" justify="center">
         <Col span={12}>
-          <Typography.Title align="middle">Reimbursements</Typography.Title>
+          {this.props.authenticated &&
+          this.props.authenticated.userRoleId === 2 ? (
+            <Typography.Title align="middle">
+              All Reimbursements
+            </Typography.Title>
+          ) : (
+            <Typography.Title align="middle">
+              My Reimbursements
+            </Typography.Title>
+          )}
           <Table
             columns={columns}
             dataSource={reimbursements}
@@ -228,6 +239,7 @@ class DashBoard extends Component {
             record={this.state.record}
             handleCancel={this.handleCancel}
             handleManageReimbursement={this.handleManageReimbursement}
+            roleId={this.props.authenticated.userRoleId}
           />
         </Col>
         <Col span={12}>

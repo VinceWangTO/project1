@@ -1,8 +1,26 @@
 import React from 'react';
 import { Modal, Button, Row, Col } from 'antd';
-
+import { ZoomInOutlined } from '@ant-design/icons';
 const ReimbursementsDetail = (props) => {
   const { record } = props;
+  const viewReceipt = (receipt, mimeType) => {
+    if (receipt !== null) {
+      var byteCharacters = receipt;
+      var byteNumbers = new Array(byteCharacters.length);
+      for (var i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      var byteArray = new Uint8Array(byteNumbers);
+      var file = new Blob([byteArray], { type: mimeType + ';base64' });
+      var fileURL = URL.createObjectURL(file);
+
+      var image = new Image();
+      image.src = receipt;
+      var w = window.open(fileURL);
+      w.document.write(image.outerHTML);
+    }
+  };
+  console.log(props.roleId);
   return (
     record && (
       <Modal
@@ -28,7 +46,17 @@ const ReimbursementsDetail = (props) => {
             </tr>
             <tr>
               <th>Reimbursement Receipt</th>
-              <td>Receipt</td>
+              <td>
+                <Button
+                  type="default"
+                  onClick={() =>
+                    viewReceipt(record.reimbursementReceipt, 'image/jpg')
+                  }
+                  icon={<ZoomInOutlined />}
+                >
+                  View Receipt
+                </Button>
+              </td>
             </tr>
             <tr>
               <th>Reimbursement Status</th>
@@ -36,7 +64,7 @@ const ReimbursementsDetail = (props) => {
             </tr>
           </tbody>
         </table>
-        {record.status === 'PENDING' && (
+        {record.status === 'PENDING' && props.roleId === 2 && (
           <div>
             <hr />
             <Row>
