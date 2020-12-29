@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import { auth } from '../actions';
 import { Layout, Menu } from 'antd';
 import {
   FileOutlined,
@@ -10,6 +10,10 @@ import {
 } from '@ant-design/icons';
 
 class Home extends Component {
+  handleLogout = () => {
+    this.props.logout();
+  };
+
   render() {
     const { Header, Content, Footer, Sider } = Layout;
     return (
@@ -43,7 +47,11 @@ class Home extends Component {
             <Menu.Item key="3" icon={<UserOutlined />}>
               My Profile
             </Menu.Item>
-            <Menu.Item key="4" icon={<LogoutOutlined />}>
+            <Menu.Item
+              key="4"
+              icon={<LogoutOutlined />}
+              onClick={this.handleLogout}
+            >
               Logout
             </Menu.Item>
           </Menu>
@@ -77,4 +85,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, actions)(Home);
+export default connect(mapStateToProps, auth)(Home);

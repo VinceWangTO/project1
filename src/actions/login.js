@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { CHANGE_AUTH, FETCH_ERROR_MESSAGE } from './types';
-import { BASE_URL, HEADER_OPTIONS } from '../lib/config';
+import { BASE_URL, HEADER_OPTIONS, getCookie } from '../lib/config';
 
 export const login = (data) => async (dispatch) => {
   try {
@@ -10,7 +10,6 @@ export const login = (data) => async (dispatch) => {
       HEADER_OPTIONS
     );
     if (response.status === 200) {
-      console.log(response.data);
       const user = response.data;
       delete user.password;
       dispatch({ type: CHANGE_AUTH, payload: user });
@@ -22,4 +21,8 @@ export const login = (data) => async (dispatch) => {
     //   payload: 'Wrong user name or password',
     // });
   }
+};
+
+export const logout = () => async (dispatch) => {
+  dispatch({ type: CHANGE_AUTH, payload: false });
 };

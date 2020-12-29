@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
+import requireAuth from './components/require_auth';
 import Login from './components/Login';
 import Home from './components/Home';
 
@@ -11,7 +12,7 @@ const App = () => {
       <BrowserRouter>
         <div>
           <Route path="/" exact component={Login} />
-          <Route path="/home" exact component={Home} />
+          <Route path="/home" exact component={requireAuth(Home)} />
         </div>
       </BrowserRouter>
     </div>
