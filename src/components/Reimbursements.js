@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
-import { Form, Input, Button, Select, Upload } from 'antd';
+import { Form, Input, Button, Select, Upload, Typography } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { reimbursementsAction } from '../actions';
 
@@ -51,10 +51,13 @@ function Reimbursements() {
   return (
     <div>
       {' '}
+      <Typography.Title align="middle">
+        New Reimbursements Request Form
+      </Typography.Title>
       <Form
         form={form}
         {...layout}
-        style={{ horizontal: 'middle' }}
+        style={{ horizontal: 'middle', marginTop: '50px' }}
         name="basic"
         initialValues={{
           remember: true,

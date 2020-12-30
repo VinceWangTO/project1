@@ -84,7 +84,9 @@ export const my_layout = (ComposedComponent, title, index) => {
                 <ComposedComponent {...this.props} />
               </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>Test Footer</Footer>
+            <Footer style={{ textAlign: 'center' }}>
+              Reimbursement Pro ©2020 Created by Heng
+            </Footer>
           </Layout>
         </Layout>
       );

@@ -130,7 +130,10 @@ class DashBoard extends Component {
         r.key = r.reimbursementId;
         r.reimbursementSubmitted = formatDate(Date(r.reimbursementSubmitted));
 
-        if (r.reimbursementResolved === null) {
+        if (
+          r.reimbursementResolved === null ||
+          r.reimbursementResolved === ''
+        ) {
           r.reimbursementResolved = '';
         } else {
           r.reimbursementResolved = formatDate(Date(r.reimbursementResolved));
