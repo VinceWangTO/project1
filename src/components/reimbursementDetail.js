@@ -20,7 +20,26 @@ const ReimbursementsDetail = (props) => {
       w.document.write(image.outerHTML);
     }
   };
-  console.log(props.roleId);
+
+  let reType = '';
+  if (record) {
+    switch (record.reimbursementTypeId) {
+      case 1:
+        reType = 'LOADING';
+        break;
+      case 2:
+        reType = 'TRAVEL';
+        break;
+      case 3:
+        reType = 'FOOD';
+        break;
+      case 4:
+        reType = 'OTHER';
+        break;
+      default:
+    }
+  }
+
   return (
     record && (
       <Modal
@@ -33,19 +52,27 @@ const ReimbursementsDetail = (props) => {
         <table style={{ margin: '0 auto' }}>
           <tbody>
             <tr>
-              <th>Reimbursement #</th>
-              <td>{record.reimbursementId}</td>
+              <th>Reimbursement</th>
+              <td>#{record.reimbursementId}</td>
             </tr>
             <tr>
-              <th>Reimbursement Amount</th>
+              <th>Request Person</th>
+              <td>John Due</td>
+            </tr>
+            <tr>
+              <th>Type</th>
+              <td>{reType}</td>
+            </tr>
+            <tr>
+              <th>Total Amount</th>
               <td>${record.reimbursementAmount}</td>
             </tr>
             <tr>
-              <th>Reimbursement Description</th>
+              <th>Description</th>
               <td>{record.reimbursementDescription}</td>
             </tr>
             <tr>
-              <th>Reimbursement Receipt</th>
+              <th>Receipt</th>
               <td>
                 <Button
                   type="default"
@@ -59,7 +86,7 @@ const ReimbursementsDetail = (props) => {
               </td>
             </tr>
             <tr>
-              <th>Reimbursement Status</th>
+              <th>Status</th>
               <td>{record.status}</td>
             </tr>
           </tbody>

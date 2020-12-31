@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reimbursementsAction } from '../actions';
 import { formatDate } from '../lib/utils';
-import { Row, Col, Table, Space, Typography } from 'antd';
+import { Row, Col, Table, Space, Typography, Button } from 'antd';
 import { Pie } from '@ant-design/charts';
+import { UnorderedListOutlined } from '@ant-design/icons';
 
 import ReimbursementsDetail from './reimbursementDetail';
 
@@ -211,9 +212,12 @@ class DashBoard extends Component {
         title: 'Action',
         key: 'action',
         render: (text, record) => (
-          <Space size="middle">
-            <p onClick={() => this.handleViewDetail(record)}>View Detail</p>
-          </Space>
+          <Button
+            onClick={() => this.handleViewDetail(record)}
+            icon={<UnorderedListOutlined />}
+          >
+            View Details
+          </Button>
         ),
       },
     ];

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Typography } from 'antd';
 class Profile extends Component {
   handleLogout = () => {
     this.props.logout();
   };
   render() {
-    return <div>This is Profile</div>;
+    return <Typography.Title align="middle">My Profile</Typography.Title>;
   }
 }
 const mapStateToProps = (state) => {

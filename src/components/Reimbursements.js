@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect, useSelector, useDispatch } from 'react-redux';
-import { Form, Input, Button, Select, Upload, Typography } from 'antd';
+import { Form, Input, Button, Select, Upload, Typography, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { reimbursementsAction } from '../actions';
 
@@ -26,7 +26,14 @@ function Reimbursements() {
     reimbursement.reimbursementAnthorId = user.userId;
     dispatch(reimbursementsAction.addReimbursement(reimbursement));
     form.resetFields();
-    alert('Reimbursement submitted!');
+    //alert('Reimbursement submitted!');
+    message.success({
+      content: 'Reimbursement submitted!',
+      className: 'custom-class',
+      style: {
+        fontSize: '20px',
+      },
+    });
   };
 
   const onFinishFailed = (errorInfo) => {
