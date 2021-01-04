@@ -148,7 +148,7 @@ class DashBoard extends Component {
             break;
           case 3:
             amountData[2].value = amountData[2].value + r.reimbursementAmount;
-            statusData[2].value = statusData[1].value + 1;
+            statusData[2].value = statusData[2].value + 1;
             r.status = 'DENIED';
             break;
           default:
@@ -222,6 +222,7 @@ class DashBoard extends Component {
       },
     ];
 
+    console.log(reimbursements);
     return (
       <Row align="middle" justify="center">
         <Col span={12}>
